@@ -21,18 +21,20 @@ class Solution:
         #     res = max(res, temp)
         # return res   
         
-        num_set = set(nums)
-        longest = 0
+        if len(nums) == 0:
+            return 0
         
-        for n in nums:
-            # check if its start a sequence
-            if (n - 1) not in num_set:
+        num_set = set(nums)
+        longest = 1
+        
+        for num in num_set:
+            if num - 1 not in num_set:
                 length = 0
-                while (n + length) in num_set:
+                while num + length in num_set:
                     length += 1
-                
+            
                 longest = max(longest, length)
-                
+            
         return longest
         
 nums = [100, 4, 200, 1, 3, 2]
